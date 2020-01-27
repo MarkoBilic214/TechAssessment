@@ -25,8 +25,18 @@ public class AddFlightView extends BaseView {
 			System.out.println("would you like to add another flight? (y/n)");
 			String res = scanner.nextLine();
 			if(res.equals("n")) {
-				this.NextViewInfo.put("flights", flightList);
-				break;	
+				if(this.NextViewInfo.containsKey("flights")) {
+					ArrayList<FlightDetails> arr = (ArrayList<FlightDetails>)this.NextViewInfo.get("flights");
+					for(FlightDetails fflight:flightList) {
+						arr.add(fflight);
+					}
+					this.NextViewInfo.replace("flights", arr);
+				}
+				else {
+					this.NextViewInfo.put("flights", flightList);
+					break;	
+				}
+				
 			}
 		}
 		this.printFlights(flightList);
@@ -38,6 +48,7 @@ public class AddFlightView extends BaseView {
 		for (FlightDetails flight: flightList) {
 			System.out.println(flight.toString());
 		}
+		System.out.println();
 	}
 
 	

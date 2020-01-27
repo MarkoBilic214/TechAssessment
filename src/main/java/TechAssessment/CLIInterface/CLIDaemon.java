@@ -4,16 +4,16 @@ import TechAssessment.CLIInterface.views.BaseView;
 
 public class CLIDaemon implements Runnable{
 	
-	public BaseView first;
+	public BaseView view;
 	public CLIDaemon(BaseView initialView) {
-		this.first = initialView;
+		this.view = initialView;
 	}
 	
 	public void run() {
 		while(true) {
-			this.first.startInteraction();
-			this.first = this.first.nextView;
-			if(this.first==null) {
+			this.view.startInteraction();
+			this.view = this.view.nextView;
+			if(this.view==null) {
 				break;
 			}
 		}

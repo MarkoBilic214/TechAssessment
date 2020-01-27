@@ -40,9 +40,7 @@ public class FlightSchedular {
 				else {
 					flightsToOrders.get(curFlight).add(order);
 					curFlight=null;
-				}
-				
-				
+				}	
 			}
 			else {
 				System.out.println("order: "+order.getOrderName() + ", flightNumber: not scheduled");
@@ -54,18 +52,5 @@ public class FlightSchedular {
 			}
 		}
 		System.out.println();
-		
-		
-	}
-	
-	private TreeSet<String> getDestinations(ArrayList<FlightDetails> flights) {
-		TreeSet<String> destinationSet = new TreeSet<String>();
-		
-		for (FlightDetails flight : flights) {
-			destinationSet.add(flight.getArrivalCity());
-		}
-		return destinationSet;
-		
-		
 	}
 }
